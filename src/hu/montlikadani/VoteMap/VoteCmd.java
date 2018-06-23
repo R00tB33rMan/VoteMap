@@ -1,7 +1,5 @@
 package hu.montlikadani.VoteMap;
 
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -31,28 +29,28 @@ public class VoteCmd implements CommandExecutor {
 						p.sendMessage(plugin.defaults(plugin.messages.getString("no-permission").replace("%perm%", "votemap.vote")));
 						return true;
 					}
-					ConfigurationSection maps = plugin.getConfig().getConfigurationSection("maps");
+					Object maps = plugin.getConfig().get("maps");
 					if (args.length == 0) {
-						for (String listMaps : plugin.getConfig().getStringList("maps")) {
-							p.sendMessage(plugin.defaults(plugin.messages.getString("vote-usage").replace("%maps%", listMaps)));
-						}
+						p.sendMessage(plugin.defaults(plugin.messages.getString("vote-usage").replace("%maps%", ((ConfigurationSection) maps).getKeys(false).toString()
+								.replace("[", "")
+								.replace("]", ""))));
 						return true;
-					} else if (args.length == 1) {
-						for (int i = 0; i < ((List<String>) maps).size(); i++) {
-							args[1] = (String) maps.get(String.valueOf(i));
-							World m = Bukkit.getWorld(args[1]);
-							if (m ==  null) {
-								p.sendMessage(plugin.defaults(plugin.messages.getString("map-not-found").replace("%map%", String.valueOf(m).toString())));
-								return true;
-							}
-							if (plugin.votes.getString("votes." + m.getName() + ".vote-amount") != null) {
-								p.sendMessage(plugin.defaults(plugin.messages.getString("no-more-vote-to-world")));
-								return true;
-							}
-							int x = 0;
-							plugin.votes.set("votes." + m.getName() + ".vote-amount", x + 1);
-							p.sendMessage(plugin.defaults(plugin.messages.getString("success-voted").replace("%map%", m.getName())));
+					}
+					if (args.length == 1) {
+						String mapName = plugin.getConfig().getString(maps + "." + p.getWorld());
+						World m = Bukkit.getWorld(mapName);
+						if (m == null) {
+							p.sendMessage(plugin.defaults(plugin.messages.getString("map-not-found").replace("%map%", args[0])));
+							return true;
 						}
+						if (plugin.votes.getString("votes." + m.getName() + ".vote-amount") != null) {
+							p.sendMessage(plugin.defaults(plugin.messages.getString("no-more-vote-to-world")));
+							return true;
+						}
+						int x = 0;
+						plugin.votes.set("votes." + m.getName() + ".vote-amount", x + 1);
+						plugin.votes.save(plugin.votes_file);
+						p.sendMessage(plugin.defaults(plugin.messages.getString("success-voted").replace("%map%", m.getName())));
 					}
 				}
 			}

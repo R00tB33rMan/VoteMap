@@ -26,7 +26,7 @@ public class VoteMap extends JavaPlugin {
 	FileConfiguration messages, votes;
 	private File config_file = new File("plugins/VoteMap/config.yml");
 	private File messages_file = new File("plugins/VoteMap/messages.yml");
-	private File votes_file = new File("plugins/VoteMap/votes.yml");
+	File votes_file = new File("plugins/VoteMap/votes.yml");
 
 	private static MapTimer mapTimer;
 	private static MapManager mapManager;
@@ -189,9 +189,11 @@ public class VoteMap extends JavaPlugin {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 			@Override
 			public void run() {
+				mapTimer = new MapTimer(5);
+				mapManager = new MapManager(instance);
 				mapTimer.tick();
 			}
-		}, 0L, 20L);
+		}, 0L, 20L*60);
 	}
 
 	public void resetVotes() {

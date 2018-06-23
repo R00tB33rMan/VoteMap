@@ -16,8 +16,10 @@ no-permission: '&cYou don''t have permission for that!&7 (%perm%)'
 # Use %subcmd% placeholder.
 unknown-sub-command: '%prefix%&c Unknown sub-command&7 %subcmd%&c.'
 
+# Use %time-left% placeholder.
+time-left: '&cThe map will be changed in&7 %time-left%&c.'
+
 # Use %seconds% placeholder.
-time-left: '&cThe map will be changed in&7 %seconds%&c.'
 auto-respawn-in: '&cAutomatic respawn in&7 %seconds%&a.'
 
 # Use %map% placeholder.

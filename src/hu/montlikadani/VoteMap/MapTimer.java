@@ -8,8 +8,8 @@ public class MapTimer {
 	private int maxTime;
 
 	public MapTimer(int maxTime) {
-		this.maxTime = maxTime;
 		this.timeLeft = maxTime;
+		this.maxTime = maxTime;
 	}
 
 	public void tick() {
@@ -17,14 +17,14 @@ public class MapTimer {
 		if (this.timeLeft % 60 == 0 && this.timeLeft != 0) {
 			for (Player pl : Bukkit.getOnlinePlayers()) {
 				pl.sendMessage(VoteMap.getInstance().defaults(VoteMap.getInstance().messages.getString("time-left")
-						.replace("%time-left%", this.secondsToMinutes(this.timeLeft))));
+						.replace("%time-left%", secondsToMinutes(this.timeLeft))));
 			}
 		}
 
 		if (this.timeLeft <= 10 && this.timeLeft >= 1) {
 			for (Player pl : Bukkit.getOnlinePlayers()) {
 				pl.sendMessage(VoteMap.getInstance().defaults(VoteMap.getInstance().messages.getString("time-left")
-						.replace("%time-left%", this.secondsToMinutes(this.timeLeft))));
+						.replace("%time-left%", secondsToMinutes(this.timeLeft))));
 			}
 		}
 
@@ -38,9 +38,9 @@ public class MapTimer {
 		int minutes = secs / 60;
 		int seconds = secs % 60;
 		if (seconds == 0 && minutes != 0) {
-			return minutes + " Minutes";
+			return minutes + " minutes";
 		} else {
-			return minutes != 0 ? minutes + " Minutes and " + seconds + " Seconds" : seconds + " Seconds";
+			return minutes != 0 ? minutes + " minutes and " + seconds + " seconds" : seconds + " seconds";
 		}
 	}
 
