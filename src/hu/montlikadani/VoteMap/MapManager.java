@@ -33,17 +33,17 @@ public class MapManager {
 
 	public void changeMap() {
 		for (Player pl : Bukkit.getOnlinePlayers()) {
-			List<String> mapNames = plugin.getConfig().getStringList("maps." + pl.getWorld().getName());
+			ConfigurationSection mapNames = plugin.getConfig().getConfigurationSection("maps." + pl.getWorld().getName());
 			int amount = plugin.votes.getInt("votes." + pl.getName() + ".vote-amount");
 			Bukkit.getLogger().log(Level.INFO, "Voted maps amount: " + amount);
-			if (amount == plugin.getConfig().getInt("maps." + Bukkit.getWorld(pl.getWorld().getName()) + ".max-votes-to-teleport")) {
-				if (mapNames.size() >= 2) {
-					changeMap((String) mapNames.get(amount));
+			if (String.valueOf(amount).length() == plugin.getConfig().getInt("maps." + Bukkit.getWorld(pl.getWorld().getName()) + ".max-votes-to-teleport")) {
+				if (((List<World>) mapNames).size() >= 2) {
+					changeMap((String) mapNames.get(String.valueOf(amount)));
 				} else {
-					changeMap((String) mapNames.get(0));
+					changeMap((String) mapNames.get(String.valueOf(0)));
 				}
 			} else {
-				changeMap((String) mapNames.get(Maths.randInt(0, mapNames.size() - 1)));
+				changeMap((String) mapNames.get(String.valueOf(Maths.randInt(0, ((List<World>) mapNames).size() - 1))));
 			}
 		}
 	}
