@@ -32,7 +32,9 @@ public class VoteCmd implements CommandExecutor {
 					}
 					List<String> maps = plugin.getConfig().getStringList("maps");
 					if (args.length == 0) {
-						p.sendMessage(plugin.defaults(plugin.messages.getString("vote-usage").replace("%maps%", String.valueOf(maps).toString())));
+						for (String listMaps : plugin.getConfig().getStringList("maps")) {
+							p.sendMessage(plugin.defaults(plugin.messages.getString("vote-usage").replace("%maps%", listMaps)));
+						}
 						return true;
 					} else if (args.length == 1) {
 						for (int i = 0; i < maps.size(); i++) {
