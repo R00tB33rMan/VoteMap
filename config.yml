@@ -40,7 +40,7 @@ maps:
     # you will, of course, search for more votes.
     max-votes-to-teleport: 30
 
-# Player auto-respawn time (in seconds)
+# Player auto-respawn time (in seconds).
 # If 0 no auto respawn.
 player-respawn-time: 3
 

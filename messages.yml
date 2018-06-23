@@ -31,6 +31,7 @@ map-changed-players-teleported: '&aAll players are getting teleported to the new
 vote-usage: '&cUsage:&7 /vote <map>&c.%newline%&6Maps can be vote:&7 %maps%'
 
 # This feature lists all the chat panel help.
+# Use %command% placeholder.
 chat-messages:
 - '&e&m---------&b> &e[&6Vote&2Map&2 Help&e]&b <&e&m----------'
 - ''

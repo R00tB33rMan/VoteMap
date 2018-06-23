@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
 public class VoteCmd implements CommandExecutor {
@@ -30,15 +31,15 @@ public class VoteCmd implements CommandExecutor {
 						p.sendMessage(plugin.defaults(plugin.messages.getString("no-permission").replace("%perm%", "votemap.vote")));
 						return true;
 					}
-					List<String> maps = plugin.getConfig().getStringList("maps");
+					ConfigurationSection maps = plugin.getConfig().getConfigurationSection("maps");
 					if (args.length == 0) {
 						for (String listMaps : plugin.getConfig().getStringList("maps")) {
 							p.sendMessage(plugin.defaults(plugin.messages.getString("vote-usage").replace("%maps%", listMaps)));
 						}
 						return true;
 					} else if (args.length == 1) {
-						for (int i = 0; i < maps.size(); i++) {
-							args[1] = maps.get(i);
+						for (int i = 0; i < ((List<String>) maps).size(); i++) {
+							args[1] = (String) maps.get(String.valueOf(i));
 							World m = Bukkit.getWorld(args[1]);
 							if (m ==  null) {
 								p.sendMessage(plugin.defaults(plugin.messages.getString("map-not-found").replace("%map%", String.valueOf(m).toString())));

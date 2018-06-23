@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -195,12 +196,12 @@ public class VoteMap extends JavaPlugin {
 
 	public void resetVotes() {
 		try {
-			List<String> maps = getConfig().getStringList("maps");
-			for (int i = 0; i < maps.size(); i++) {
-				World m = Bukkit.getWorld(maps.get(i));
-				this.votes.set("votes." + m.getName() + ".vote-amount", null);
+			ConfigurationSection maps = getConfig().getConfigurationSection("maps");
+			for (int i = 0; i < ((List<String>) maps).size(); i++) {
+				World m = Bukkit.getWorld((String) maps.get(String.valueOf(i)));
+				votes.set("votes." + m.getName() + ".vote-amount", null);
 			}
-			this.votes.save(this.votes_file);
+			votes.save(votes_file);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throwMsg();
