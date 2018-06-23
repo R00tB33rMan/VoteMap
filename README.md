@@ -1,0 +1,2 @@
+# VoteMap
+Map rotator plugin.
