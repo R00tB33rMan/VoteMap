@@ -8,7 +8,7 @@
 # https://github.com/montlikadani/VoteMap/blob/master/config.yml         #
 #                                                                        #
 # [Placeholders]                                                         #
-# https://github.com/montlikadani/TabList/wiki/Placeholders              #
+# https://github.com/montlikadani/VoteMap/wiki/Placeholders              #
 #                                                                        #
 # [Tips]                                                                 #
 # - Use color coding '&' character, on this page:                        #
@@ -75,7 +75,7 @@ plugin-disable: '%prefix%&c The plugin successfully disabled!'
 default-can-see-plugin-information: false
 
 # Unknown-command - If more than one word/letter you write to it.
-# Example: /tl reload something...
+# Example: /vm reload something...
 # Use %command% placeholder.
 # This feature is NOT enter into the unknown command Minecraft, it's just your own.
 unknown-command-enable: true

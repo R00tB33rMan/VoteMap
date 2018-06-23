@@ -25,7 +25,7 @@ public class VoteMap extends JavaPlugin {
 	FileConfiguration messages, votes;
 	private File config_file = new File("plugins/VoteMap/config.yml");
 	private File messages_file = new File("plugins/VoteMap/messages.yml");
-	File votes_file = new File("plugins/VoteMap/votes.yml");
+	private File votes_file = new File("plugins/VoteMap/votes.yml");
 
 	private static MapTimer mapTimer;
 	private static MapManager mapManager;
@@ -113,7 +113,7 @@ public class VoteMap extends JavaPlugin {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			getLogger().log(Level.WARNING, "There was an error. Please report it here:\nhttps://github.com/montlikadani/TabList/issues");
+			getLogger().log(Level.WARNING, "There was an error. Please report it here:\nhttps://github.com/montlikadani/VoteMap/issues");
 		}
 	}
 
