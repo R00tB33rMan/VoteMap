@@ -41,6 +41,8 @@ chat-messages:
 - '&8/&a%command% disable&5 -&6 Disable the plugin.'
 - '&8/&a%command% help&5 -&6 Help commands.'
 - '&8/&a%command% reload&3 (or rl)&5 -&6 Reload the plugin.'
+- '&8/vote&5 -&6 List maps to vote for.'
+- '&8/vote&c <mapname>&5 -&6 Voting on a map.'
 - '&e&m---------------------------------------------------------'
 
 # DO NOT CHANGE THIS!
