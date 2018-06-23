@@ -1,0 +1,85 @@
+#=================================OOO====================================#
+#                     VoteMap Configuration File                         #
+#=================================OOO====================================#
+# config.yml file. Plugin version: 1.0                                   #
+# Author, created by: montlikadani                                       #
+#=================================OOO====================================#
+# [Default configuration]                                                #
+# https://github.com/montlikadani/VoteMap/blob/master/config.yml         #
+#                                                                        #
+# [Placeholders]                                                         #
+# https://github.com/montlikadani/TabList/wiki/Placeholders              #
+#                                                                        #
+# [Tips]                                                                 #
+# - Use color coding '&' character, on this page:                        #
+# http://minecraft.gamepedia.com/Formatting_codes                        #
+# - In case of an error, write here:                                     #
+# https://github.com/montlikadani/VoteMap/issues                         #
+# - If the string is empty does not send the message.                    #
+#=================================OOO====================================#
+
+#=========================================#
+#                Settings                 #
+#=========================================#
+# Map change time (in seconds).
+time: 900
+
+# Maps that you can vote for and will change.
+# Minimum maps: 2 - If less than two, the first one is selected.
+maps:
+  testworld:
+    # Maximum votes to be reached. If the map does not reach max. voting, 
+    # you will, of course, search for more votes.
+    max-votes-to-teleport: 20
+  world:
+    # Maximum votes to be reached. If the map does not reach max. voting, 
+    # you will, of course, search for more votes.
+    max-votes-to-teleport: 15
+  pvp:
+    # Maximum votes to be reached. If the map does not reach max. voting, 
+    # you will, of course, search for more votes.
+    max-votes-to-teleport: 30
+
+# Player auto-respawn time (in seconds)
+# If 0 no auto respawn.
+player-respawn-time: 3
+
+# Teleport players when the map changes?
+teleport-players: true
+
+#=========================================#
+#             Plugin Settings             #
+#=========================================#
+# The VoteMap plugin is disabled (false) or enabled (true).
+enabled: true
+
+# bStats Metrics.
+metrics: true
+
+# Check for updates.
+check-update: true
+
+# Log plugin messages into console.
+logconsole: true
+
+# Logging to file plugin messages.
+log-to-file: true
+
+# Plugin enable/disable messages in console.
+# Use %newline%, %prefix% placeholder.
+plugin-enable: '%prefix%&a The plugin successfully enabled&6 v1.0&a!'
+plugin-disable: '%prefix%&c The plugin successfully disabled!'
+
+# The default is allowed to see the plugin information.
+# Permission: votemap.plugininfo
+default-can-see-plugin-information: false
+
+# Unknown-command - If more than one word/letter you write to it.
+# Example: /tl reload something...
+# Use %command% placeholder.
+# This feature is NOT enter into the unknown command Minecraft, it's just your own.
+unknown-command-enable: true
+unknown-command: '%prefix%&c Unknown command.&7 Type "&f/%command% help&7" for help.'
+
+# DO NOT CHANGE THIS!
+config-version: 1

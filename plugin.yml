@@ -1,0 +1,40 @@
+name: VoteMap
+main: hu.montlikadani.VoteMap.VoteMap
+version: 1.0
+author: montlikadani
+description: Map rotator plugin.
+# DO NOT EDIT ANYTHING ABOVE THIS LINE!
+
+commands:
+  votemap:
+    description: The main command for VoteMap.
+    usage: <command>
+    aliases: [vm]
+  vote:
+    description: Voting to the specified map.
+    usage: <command>
+
+permissions:
+  votemap.*:
+     description: Gives access to all VoteMap permissions.
+     children:
+       votemap.vote: true
+       votemap.reload: true
+       votemap.plugindisable: true
+       votemap.help: true
+       votemap.cmd.tabcomplete: true
+  votemap.vote:
+    description: Allows a player to use this /vote command.
+    default: true
+  votemap.help:
+    description: Help commands for VoteMap.
+    default: false
+  votemap.reload:
+    description: Reload the plugin.
+    default: op
+  votemap.plugindisable:
+    description: Allow to player to disable plugin.
+    default: op
+  votemap.cmd.tabcomplete:
+    description: You can use [TAB] in commands.
+    default: false
