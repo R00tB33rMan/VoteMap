@@ -1,5 +1,8 @@
 package hu.montlikadani.VoteMap;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -15,6 +18,8 @@ public class VoteCmd implements CommandExecutor {
 	public VoteCmd(VoteMap plugin) {
 		this.plugin = plugin;
 	}
+
+	ArrayList<UUID> voted = new ArrayList<UUID>();
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -37,20 +42,20 @@ public class VoteCmd implements CommandExecutor {
 						return true;
 					}
 					if (args.length == 1) {
-						String mapName = plugin.getConfig().getString(maps + "." + p.getWorld());
-						World m = Bukkit.getWorld(mapName);
+						World m = Bukkit.getWorld(args[0]);
 						if (m == null) {
 							p.sendMessage(plugin.defaults(plugin.messages.getString("map-not-found").replace("%map%", args[0])));
 							return true;
 						}
-						if (plugin.votes.getString("votes." + m.getName() + ".vote-amount") != null) {
+						if (voted.contains(p.getUniqueId())) {
+							voted.add(p.getUniqueId());
 							p.sendMessage(plugin.defaults(plugin.messages.getString("no-more-vote-to-world")));
 							return true;
 						}
 						int x = 0;
-						plugin.votes.set("votes." + m.getName() + ".vote-amount", x + 1);
+						plugin.votes.set("votes." + plugin.getConfig().getString("maps." + m + ".vote-amount"), x + 1);
 						plugin.votes.save(plugin.votes_file);
-						p.sendMessage(plugin.defaults(plugin.messages.getString("success-voted").replace("%map%", m.getName())));
+						p.sendMessage(plugin.defaults(plugin.messages.getString("success-voted").replace("%map%", plugin.getConfig().getString("maps." + m))));
 					}
 				}
 			}

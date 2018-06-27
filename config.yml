@@ -1,7 +1,7 @@
 #=================================OOO====================================#
 #                     VoteMap Configuration File                         #
 #=================================OOO====================================#
-# config.yml file. Plugin version: 1.0                                   #
+# config.yml file. Plugin version: ${project.version}                    #
 # Author, created by: montlikadani                                       #
 #=================================OOO====================================#
 # [Default configuration]                                                #
@@ -40,6 +40,15 @@ maps:
     # you will, of course, search for more votes.
     max-votes-to-teleport: 30
 
+# Periodic notifications.
+notifications:
+  '60':
+    # Use %time-left% placeholder.
+    message: '&cThe map will be changed in&7 %time-left%&c seconds.'
+  '30':
+    # Use %time-left% placeholder.
+    message: '&cThe map will be changed in&7 %time-left%&c seconds.'
+
 # Player auto-respawn time (in seconds).
 # If 0 no auto respawn.
 player-respawn-time: 3
@@ -67,7 +76,7 @@ log-to-file: true
 
 # Plugin enable/disable messages in console.
 # Use %newline%, %prefix% placeholder.
-plugin-enable: '%prefix%&a The plugin successfully enabled&6 v1.0&a!'
+plugin-enable: '%prefix%&a The plugin successfully enabled&6 v${project.version}&a!'
 plugin-disable: '%prefix%&c The plugin successfully disabled!'
 
 # The default is allowed to see the plugin information.

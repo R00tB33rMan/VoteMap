@@ -16,9 +16,6 @@ no-permission: '&cYou don''t have permission for that!&7 (%perm%)'
 # Use %subcmd% placeholder.
 unknown-sub-command: '%prefix%&c Unknown sub-command&7 %subcmd%&c.'
 
-# Use %time-left% placeholder.
-time-left: '&cThe map will be changed in&7 %time-left%&c.'
-
 # Use %seconds% placeholder.
 auto-respawn-in: '&cAutomatic respawn in&7 %seconds%&a.'
 
@@ -44,8 +41,8 @@ chat-messages:
 - '&8/&a%command% disable&5 -&6 Disable the plugin.'
 - '&8/&a%command% help&5 -&6 Help commands.'
 - '&8/&a%command% reload&3 (or rl)&5 -&6 Reload the plugin.'
-- '&8/vote&5 -&6 List maps to vote for.'
-- '&8/vote&c <mapname>&5 -&6 Voting on a map.'
+- '&8/&avote&5 -&6 List maps to vote for.'
+- '&8/&avote&c <mapname>&5 -&6 Voting on a map.'
 - '&e&m---------------------------------------------------------'
 
 # DO NOT CHANGE THIS!

@@ -45,7 +45,8 @@ public class VoteMap extends JavaPlugin {
 			instance = this;
 			Bukkit.getPluginManager().registerEvents(new Listeners(this), this);
 			registerCommands();
-			runTimer();
+			mapTimer.run();
+			mapManager = new MapManager(instance);
 			if (getConfig().getBoolean("check-update")) {
 				logConsole(Level.INFO, checkVersion());
 			}
@@ -183,17 +184,6 @@ public class VoteMap extends JavaPlugin {
 	private void registerCommands() {
 		getCommand("votemap").setExecutor(new Commands(this));
 		getCommand("vote").setExecutor(new VoteCmd(this));
-	}
-
-	public void runTimer() {
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-			@Override
-			public void run() {
-				mapTimer = new MapTimer(5);
-				mapManager = new MapManager(instance);
-				mapTimer.tick();
-			}
-		}, 0L, 20L*60);
 	}
 
 	public void resetVotes() {

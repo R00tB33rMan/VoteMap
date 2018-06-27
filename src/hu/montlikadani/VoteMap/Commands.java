@@ -26,7 +26,7 @@ public class Commands implements CommandExecutor, TabCompleter {
 						return true;
 					}
 					sender.sendMessage("§e§l[§6Vote§aMap§b§l Info§e§l]");
-					sender.sendMessage("§5Version:§a 1.0");
+					sender.sendMessage("§5Version:§a ${project.version}");
 					sender.sendMessage("§5Author, created by:§a montlikadani");
 					sender.sendMessage("§5Commands:§8 /§7" + label + "§a help");
 					sender.sendMessage("§4In case of an error, write here:§e §nhttps://github.com/montlikadani/VoteMap/issues");
